@@ -1,0 +1,34 @@
+<h2><%= @channel.name %></h2>
+<%= form_tag channelname_path(@channel.id), :method => "get" do %>
+<%= text_field_tag :search,params[:search]%>
+<%= submit_tag("Search")%>
+<%end%>
+<table>
+	<%if @tvshows.present? %>
+		<tr>
+			<th>Name</th>
+			<th>Timing</th>
+			<th>Bookmark</th>
+		</tr>
+		<% @tvshows.each do |show| %>
+			<tr>
+				<td><%= show.name %></td>
+				<td><%= show.time %></td>
+				<td><%= show.bookmark%></td> 
+			</tr>
+		<%end%>
+	<%elsif @tvshow.present? %>
+		<tr>
+			<th>Name</th>
+			<th>Timing</th>
+			<th>Bookmark</th>
+		</tr>
+		<tr>
+			<td><%= @tvshow.name %></td>
+			<td><%= @tvshow.time %></td>
+			<td><%= @tvshow.bookmark%></td> 
+		</tr>
+	<%else%>
+		<p>No Shows found!</p>
+	<%end%>
+</table>

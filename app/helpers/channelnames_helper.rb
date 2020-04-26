@@ -1,0 +1,2 @@
+module ChannelnamesHelper
+end

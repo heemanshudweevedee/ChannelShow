@@ -1,0 +1,15 @@
+<%= form_tag channelnames_path, :method => "get" do %>
+<%= text_field_tag :search,params[:search]%>
+<%= submit_tag("Search")%>
+<%end%>
+<%if @channel.present? %>
+
+<h1><%= link_to @channel.name, channelname_path(@channel.id) %></h1>
+
+<% elsif @channel_name.present? %>
+<% @channel_name.each do |channel| %>
+<h1><%= link_to channel.name, channelname_path(channel.id) %></h1>
+<%end%>
+<%else%>
+<p>No record Found</p>
+<%end%>
